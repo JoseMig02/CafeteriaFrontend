@@ -1,0 +1,21 @@
+.usuario-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .usuario-card {
+    margin: 20px;
+    cursor: pointer;
+  }
+  
+  .usuario-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; /* Hace que la imagen sea redonda */
+  }
+  
+  p {
+    margin-top: 0;
+    text-align: center;
+    margin-bottom: 1rem;
+}

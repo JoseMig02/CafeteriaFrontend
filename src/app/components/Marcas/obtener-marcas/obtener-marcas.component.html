@@ -1,0 +1,33 @@
+<div class="container">
+  <h1 class="mt-4 mb-4">Lista de Marcas</h1>
+
+   <!-- Botón para crear nueva marca -->
+   <button  type="button" class="btn btn-success"   [routerLink]="['/crearMarca']">
+    <i class="bi bi-plus-circle-fill"></i> Crear Marca
+</button>
+  <div class="text-center mt-4">
+      
+  </div>
+  <div class="row">
+      <div *ngFor="let marca of marcas" class="marca-card col-md-4">
+          <div class="card mb-4 shadow">
+              <div class="card-body">
+                  <h5 class="card-title">{{ marca.nombre }}</h5>
+                  <p class="card-text">Descripción: {{ marca.descripcion }}</p>
+                  <p class="card-text">Estado: {{ marca.estado }}</p>
+                  <div class="d-flex justify-content-between">
+                      <!-- Botón para actualizar -->
+                      <button (click)="actualizar(marca.id)" type="button" class="btn btn-primary">
+                          <i class="bi bi-pencil-fill"></i> Actualizar
+                      </button>
+                      <!-- Botón para borrar -->
+                      <button (click)="eliminar(marca.id)" type="button" class="btn btn-danger" >
+                          <i class="bi bi-trash-fill"></i> Borrar
+                      </button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+ 
+</div>

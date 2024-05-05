@@ -1,0 +1,49 @@
+<div class="container">
+    <h1 class="mt-4 mb-4">Actualizar Cafetería</h1>
+    <form [formGroup]="cafeteriaForm" (ngSubmit)="actualizarCafeteria()" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" class="form-control" formControlName="nombre">
+      </div>
+      <div class="form-group">
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" class="form-control" formControlName="direccion">
+      </div>
+      <div class="form-group">
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" class="form-control" formControlName="descripcion" rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="encargado">Encargado:</label>
+        <input type="text" id="encargado" class="form-control" formControlName="encargado">
+      </div>
+      <div class="form-group">
+        <label for="estado">Estado:</label>
+        <select id="estado" class="form-control" formControlName="estado">
+          <option value="Activo">Activo</option>
+          <option value="Inactivo">Inactivo</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="campusID">Campus:</label>
+        <select id="campusID" class="form-control" formControlName="campusID">
+          <option *ngFor="let campus of campusList" [value]="campus.id">{{ campus.nombre }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="telefono">Teléfono:</label>
+        <input type="text" id="telefono" class="form-control" formControlName="telefono">
+      </div>
+      <div class="form-group">
+        <label for="imagen">Imagen:</label>
+        <input type="file" id="imagen" class="form-control-file" (change)="onFileSelected($event)">
+      </div>
+      <div class="imagen mt-2">
+        <img *ngIf="imgUrl" [src]="imgUrl" width="100px" class="img-fluid mb-2" alt="Imagen de la cafetería">
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Actualizar</button>
+      <button class="btn btn-secondary mt-2 m-2" [routerLink]="['/obtenerCafeterias']">Cancelar</button>
+    </form>
+  </div>
+  

@@ -1,0 +1,33 @@
+
+  
+<div class="container"><div class="row">
+    <h1 class="mt-4 mb-4">Lista de Campus</h1>
+
+      <div class="mt-4 mb-4">
+              <button  type="button" class="btn btn-success"   [routerLink]="['/crearCampus']">
+        <i class="bi bi-plus-circle-fill"></i> Crear Campus
+    </button>
+      </div>
+    <div *ngFor="let campus of campusList" class="col-lg-4">
+        
+        <div class="card mb-4 shadow">
+            <div class="card-body">
+                <h5 class="card-title">{{ campus.nombre }}</h5>
+                <p class="card-text">Dirección: {{ campus.direccion }}</p>
+                <p class="card-text">Estado: {{ campus.estado }}</p>
+                <div class="d-flex justify-content-between">
+                    <!-- Botón para actualizar -->
+                    <button (click)="actualizar(campus.id)" type="button" class="btn btn-primary">
+                        <i class="bi bi-pencil-fill"></i> Actualizar
+                    </button>
+                    <!-- Botón para borrar -->
+                    <button  (click)="eliminar(campus.id)" type="button" class="btn btn-danger">
+                        <i class="bi bi-trash-fill"></i> Borrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+

@@ -1,0 +1,39 @@
+<div class="container">
+    <h1 class="mt-4 mb-4">Crear Proveedor</h1>
+    <form [formGroup]="proveedorForm" (ngSubmit)="crearProveedor()">
+      <div class="form-group">
+        <label for="nombreComercial">Nombre Comercial:</label>
+        <input type="text" formControlName="nombreComercial" class="form-control" id="nombreComercial">
+        <div *ngIf="proveedorForm.get('nombreComercial')?.invalid && (proveedorForm.get('nombreComercial')?.dirty || proveedorForm.get('nombreComercial')?.touched)">
+          <div *ngIf="proveedorForm.get('nombreComercial')?.errors?.['required']" class="text-danger">El nombre comercial es requerido.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="rnc">RNC:</label>
+        <input type="text" formControlName="rnc" class="form-control" id="rnc">
+        <div *ngIf="proveedorForm.get('rnc')?.invalid && (proveedorForm.get('rnc')?.dirty || proveedorForm.get('rnc')?.touched)">
+          <div *ngIf="proveedorForm.get('rnc')?.errors?.['required']" class="text-danger">El RNC es requerido.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="fechaRegistro">Fecha Registro</label>
+        <input type="date" formControlName="fechaRegistro" class="form-control">
+        <div *ngIf="proveedorForm.get('fechaRegistro')?.invalid && (proveedorForm.get('fechaRegistro')?.dirty || proveedorForm.get('fechaRegistro')?.touched)" class="text-danger">
+          <div *ngIf="proveedorForm.get('fechaRegistro')?.errors?.['required']">La fecha de registro es requerida</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="estado">Estado:</label>
+        <select formControlName="estado" class="form-control" id="estado">
+          <option value="Activo">Activo</option>
+          <option value="Inactivo">Inactivo</option>
+        </select>
+        <div *ngIf="proveedorForm.get('estado')?.invalid && (proveedorForm.get('estado')?.dirty || proveedorForm.get('estado')?.touched)">
+          <div *ngIf="proveedorForm.get('estado')?.errors?.['required']" class="text-danger">El estado es requerido.</div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary mt-3" style="margin-right: 10px;">Crear proveedor</button>
+      <button class="btn btn-secondary mt-3" [routerLink]="['/obtenerProveedores']">Cancelar</button>
+    </form>
+  </div>
+  

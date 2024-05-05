@@ -1,0 +1,9 @@
+<div class="container">
+    <h1 class="mt-4 mb-4">Eliminar Cafetería</h1>
+    <div *ngIf="cafeteria" class="alert alert-danger">
+      ¿Estás seguro de que deseas eliminar la cafetería "{{ cafeteria.nombre }}"?
+    </div>
+    <button class="btn btn-danger" (click)="eliminarCafeteria()">Eliminar</button>
+    <button class="btn btn-secondary mt-2 m-2" [routerLink]="['/obtenerCafeterias']">Cancelar</button>
+  </div>
+  

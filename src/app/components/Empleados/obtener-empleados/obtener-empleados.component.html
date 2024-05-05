@@ -1,0 +1,21 @@
+<div class="container">
+  <h1 class="mt-4 mb-4">Lista de Empleados</h1>
+  <div class="container d-flex">
+     <button  type="button" class="btn btn-success mb-4"   [routerLink]="['/crearEmpleado']">
+    <i class="bi bi-plus-circle-fill"></i> Crear Empleado
+</button>
+<app-exportar-empleados></app-exportar-empleados>
+  </div>
+ 
+  <div class="row">
+    <div *ngFor="let item of empleadosConImagenes" class="col-md-2" (click)="obtenerDetalles(item.empleado.id)">
+      <div class="card mb-4 shadow">
+        <img [src]="item.imgUrl" alt="Imagen de Empleado" class="card-img-top">
+
+        <div class="card-body">
+          <h5 class="card-title">{{ item.empleado.nombre }}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

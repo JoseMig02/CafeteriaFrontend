@@ -1,0 +1,41 @@
+<div class="container">
+    <h1 class="mt-4 mb-4">Crear Campus</h1>
+    <form [formGroup]="campusForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" class="form-control" formControlName="nombre">
+        <div *ngIf="campusForm.get('nombre')?.invalid && (campusForm.get('nombre')?.dirty || campusForm.get('nombre')?.touched)" class="text-danger">
+          <div *ngIf="campusForm.get('nombre')?.errors?.['required']">El nombre es requerido.</div>
+          <div *ngIf="campusForm.get('nombre')?.errors?.['minlength']">El nombre debe tener al menos 3 caracteres.</div>
+          <div *ngIf="campusForm.get('nombre')?.errors">El nombre debe tener máximo 50 caracteres.</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" class="form-control" formControlName="direccion">
+        <div *ngIf="campusForm.get('direccion')?.invalid && (campusForm.get('direccion')?.dirty || campusForm.get('direccion')?.touched)" class="text-danger">
+          <div *ngIf="campusForm.get('direccion')?.errors?.['required']">La dirección es requerida.</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="estado">Estado:</label>
+        <select id="estado" class="form-control" formControlName="estado">
+          <option value="" disabled selected>Seleccione un estado</option>
+          <option value="Activo">Activo</option>
+          <option value="Inactivo">Inactivo</option>
+        </select>
+        <div *ngIf="campusForm.get('estado')?.invalid && campusForm.get('estado')?.touched" class="text-danger">El estado es requerido.</div>
+      </div>
+  
+      <div class="form-group">
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" class="form-control" formControlName="descripcion"></textarea>
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Crear Campus</button>
+      <button class="btn btn-secondary mt-3 m-3" [routerLink]="['/obtenerCampus']">Cancelar</button>
+    </form>
+  </div>
+  

@@ -1,0 +1,43 @@
+<div class="container">
+    <h1 class="title">Ventas por Fecha</h1>
+    <button  class="btn btn-light"  [routerLink]="['/obtenerFacturaciones']">
+      <i class="bi bi-arrow-left"></i> Volver a Facturaciones
+  </button>
+  
+    <!-- Selector para elegir la fecha de inicio y fin -->
+    <div class="form-group row">
+        <label for="fechaInicio" class="col-form-label col-sm-2">Fecha de Inicio:</label>
+        <input type="date" class="form-control col-sm-3" id="fechaInicio" [(ngModel)]="fechaInicio" (change)="onChangeFecha()">
+        <label for="fechaFin" class="col-form-label col-sm-2">Fecha de Fin:</label>
+        <input type="date" class="form-control col-sm-3" id="fechaFin" [(ngModel)]="fechaFin" (change)="onChangeFecha()">
+      </div>
+      
+    <!-- Tabla para mostrar las ventas por fecha -->
+    <div class="table-responsive" *ngIf="ventasPorFecha.length > 0">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Factura No.</th>
+            <th>Fecha de Venta</th>
+            <th>Monto</th>
+            <th>Unidades Vendidas</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let venta of ventasPorFecha">
+            <td>{{ venta.noFactura }}</td>
+            <td>{{ venta.fechaVenta | date:'mediumDate' }}</td>
+            <td>{{ venta.montoArticulo | currency }}</td>
+            <td>{{ venta.unidadesVendidas }}</td>
+            <td>{{ venta.Total | currency }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- Mensaje si no hay ventas por fecha -->
+    <div *ngIf="ventasPorFecha.length === 0" class="text-center .no-ventas">
+      <p>No se encontraron ventas para el rango de fechas seleccionado.</p>
+    </div>
+  </div>

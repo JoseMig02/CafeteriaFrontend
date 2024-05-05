@@ -1,0 +1,9 @@
+<div class="container">
+    <h1 class="mt-4 mb-4">Eliminar Campus</h1>
+    <div *ngIf="campus" class="alert alert-danger">
+      ¿Estás seguro de que deseas eliminar el campus "{{ campus.nombre }}"?
+    </div>
+    <button class="btn btn-danger" (click)="eliminarCampus()">Eliminar</button>
+    <button class="btn btn-secondary mt-2 m-2" [routerLink]="['/obtenerCampus']">Cancelar</button>
+  </div>
+  

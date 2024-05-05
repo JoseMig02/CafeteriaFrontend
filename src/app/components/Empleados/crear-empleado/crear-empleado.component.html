@@ -1,0 +1,59 @@
+<div class="container">
+    <h1 class="mt-4 mb-4">Crear Empleado</h1>
+    <form [formGroup]="empleadoForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" class="form-control" formControlName="nombre">
+        <div *ngIf="empleadoForm.get('nombre')?.invalid && empleadoForm.get('nombre')?.touched" class="text-danger">El nombre es requerido y debe tener entre 3 y 50 caracteres.</div>
+      </div>
+  
+      <div class="form-group">
+        <label for="cedula">Cédula:</label>
+        <input type="text" id="cedula" class="form-control" formControlName="cedula">
+        <div *ngIf="empleadoForm.get('cedula')?.invalid && empleadoForm.get('cedula')?.touched" class="text-danger">La cédula es requerida.</div>
+      </div>
+  
+      <div class="form-group">
+        <label for="tandaLabor">Tanda Labor:</label>
+        <input type="text" id="tandaLabor" class="form-control" formControlName="tandaLabor">
+        <div *ngIf="empleadoForm.get('tandaLabor')?.invalid && empleadoForm.get('tandaLabor')?.touched" class="text-danger">La tanda labor es requerida.</div>
+      </div>
+  
+      <div class="form-group">
+        <label for="cargo">Cargo:</label>
+        <input type="text" id="cargo" class="form-control" formControlName="cargo">
+        <div *ngIf="empleadoForm.get('cargo')?.invalid && empleadoForm.get('cargo')?.touched" class="text-danger">El cargo es requerido.</div>
+      </div>
+  
+      <div class="form-group">
+        <label for="porcientoComision">Porcentaje de Comisión:</label>
+        <input type="number" id="porcientoComision" class="form-control" formControlName="porcientoComision">
+        <div *ngIf="empleadoForm.get('porcientoComision')?.invalid && empleadoForm.get('porcientoComision')?.touched" class="text-danger">El porcentaje de comisión es requerido y debe estar entre 0 y 100.</div>
+      </div>
+  
+      <div class="form-group">
+        <label for="fechaIngreso">Fecha de Ingreso:</label>
+        <input type="date" id="fechaIngreso" class="form-control" formControlName="fechaIngreso">
+        <div *ngIf="empleadoForm.get('fechaIngreso')?.invalid && empleadoForm.get('fechaIngreso')?.touched" class="text-danger">La fecha de ingreso es requerida.</div>
+      </div>
+  
+      <div class="form-group">
+        <label for="estado">Estado:</label>
+        <select id="estado" class="form-control" formControlName="estado">
+          <option value="" disabled selected>Seleccione un estado</option>
+          <option value="Activo">Activo</option>
+          <option value="Inactivo">Inactivo</option>
+        </select>
+        <div *ngIf="empleadoForm.get('estado')?.invalid && empleadoForm.get('estado')?.touched" class="text-danger">El estado es requerido.</div>
+      </div>
+  
+      <div class="form-group">
+        <label for="imagen">Imagen:</label>
+        <input type="file" id="imagen" class="form-control" formControlName="img" (change)="onFileSelected($event)">
+      </div>
+  
+      <button type="submit" class="btn btn-primary mt-2 mb-2">Crear empleado</button>
+      <button class="btn btn-secondary m-2 " [routerLink]="['/obtenerEmpleados']">Cancelar</button>
+    </form>
+  </div>
+  

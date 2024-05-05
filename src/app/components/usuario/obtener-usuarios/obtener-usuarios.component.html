@@ -1,0 +1,13 @@
+
+
+  
+  <div class="container">
+    <h2>Lista de Usuarios</h2>
+    <div class="usuario-list">
+      <div *ngFor="let usuario of usuariosConImagenes" class="usuario-card" (click)="verDetalle(usuario.usuario.id)">
+        <img [src]="usuario.imgUrl" alt="Imagen de {{ usuario.usuario.nombre }}" class="usuario-img">
+        <p class="usuario-nombre">{{ usuario.usuario.nombre }}</p>
+      </div>
+    </div>
+  </div>
+  

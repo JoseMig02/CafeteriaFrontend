@@ -1,0 +1,80 @@
+<div class="container">
+    <h1 class="mt-4 mb-4">Actualizar Empleado</h1>
+    <form [formGroup]="empleadoForm" (ngSubmit)="actualizarEmpleado()" style="width: 50%; margin-left: 25px;">
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" formControlName="nombre" class="form-control" id="nombre" placeholder="Nombre">
+        <div *ngIf="empleadoForm.get('nombre')?.invalid && (empleadoForm.get('nombre')?.dirty || empleadoForm.get('nombre')?.touched)" class="text-danger">
+          <div *ngIf="empleadoForm.get('nombre')?.errors?.['required']">El nombre es requerido.</div>
+          <div *ngIf="empleadoForm.get('nombre')?.errors?.['minlength']">El nombre debe tener al menos 3 caracteres.</div>
+          <div *ngIf="empleadoForm.get('nombre')?.errors?.['maxlength']">El nombre debe tener máximo 50 caracteres.</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="cedula">Cédula</label>
+        <input type="text" formControlName="cedula" class="form-control" id="cedula" placeholder="Cédula">
+        <div  *ngIf="empleadoForm.get('cedula')?.invalid && (empleadoForm.get('cedula')?.dirty || empleadoForm.get('cedula')?.touched)" class="text-danger">
+          <div *ngIf="empleadoForm.get('cedula')?.errors?.['required']">La cédula es requerida.</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="tandaLabor">Tanda Labor</label>
+        <input type="text" formControlName="tandaLabor" class="form-control" id="tandaLabor" placeholder="Tanda Labor">
+        <div *ngIf="empleadoForm.get('tandaLabor')?.invalid && (empleadoForm.get('tandaLabor')?.dirty || empleadoForm.get('tandaLabor')?.touched)" class="text-danger">
+          <div *ngIf="empleadoForm.get('tandaLabor')?.errors?.['required']">La tanda labor es requerida.</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="cargo">Cargo</label>
+        <input type="text" formControlName="cargo" class="form-control" id="cargo" placeholder="Cargo">
+        <div *ngIf="empleadoForm.get('cargo')?.invalid && (empleadoForm.get('cargo')?.dirty || empleadoForm.get('cargo')?.touched)" class="text-danger">
+          <div *ngIf="empleadoForm.get('cargo')?.errors?.['required']">El cargo es requerido.</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="porcientoComision">Porcentaje de Comisión</label>
+        <input type="number" formControlName="porcientoComision" class="form-control" id="porcientoComision" placeholder="Porcentaje de Comisión">
+        <div *ngIf="(empleadoForm.get('porcientoComision')?.invalid && (empleadoForm.get('porcientoComision')?.dirty || empleadoForm.get('porcientoComision')?.touched)) || empleadoForm.get('porcientoComision')?.value < 0 || empleadoForm.get('porcientoComision')?.value > 100" class="text-danger">
+          <div *ngIf="empleadoForm.get('porcientoComision')?.errors?.['required']">El porcentaje de comisión es requerido.</div>
+          <div *ngIf="empleadoForm.get('porcientoComision')?.errors?.['min'] || empleadoForm.get('porcientoComision')?.errors?.['max']">El porcentaje de comisión debe estar entre 0 y 100.</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="fechaIngreso">Fecha de Ingreso</label>
+        <input type="date" formControlName="fechaIngreso" class="form-control" id="fechaIngreso" placeholder="Fecha de Ingreso">
+        <div *ngIf="empleadoForm.get('fechaIngreso')?.invalid && (empleadoForm.get('fechaIngreso')?.dirty || empleadoForm.get('fechaIngreso')?.touched)" class="text-danger">
+          <div *ngIf="empleadoForm.get('fechaIngreso')?.errors?.['required']">La fecha de ingreso es requerida.</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="estado">Estado</label>
+        <select formControlName="estado" class="form-control" id="estado">
+          <option value="" disabled >Seleccione un estado</option>
+          <option formControlName="estado" value="Activo" >Activo</option>
+          <option value="Inactivo">Inactivo</option>
+        </select>
+        <div *ngIf="empleadoForm.get('estado')?.invalid && (empleadoForm.get('estado')?.dirty || empleadoForm.get('estado')?.touched)" class="text-danger">
+          <div *ngIf="empleadoForm.get('estado')?.errors?.['required']">El estado es requerido.</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="img">Imagen</label>
+        <input type="file" (change)="onFileSelected($event)" class="form-control" id="img">
+      </div>
+  
+      <div *ngIf="imgUrl" class="form-group">
+        <img [src]="imgUrl" alt="Imagen de empleado" width="100">
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Actualizar</button>
+      <button class="btn btn-secondary mt-2 m-2" [routerLink]="['/obtenerEmpleados']">Cancelar</button>
+    </form>
+  </div>
+  

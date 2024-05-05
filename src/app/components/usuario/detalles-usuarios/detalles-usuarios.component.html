@@ -1,0 +1,31 @@
+<div *ngIf="usuario" class="detalles-usuario">
+    <h2>Detalles del Usuario</h2>
+    <div class="detalles-container">
+      <div class="columna">
+        
+        <p>Nombre:</p>
+        <p>Limite de Credito</p>
+        <p>Cedula:</p>
+        <p>Fecha de registro:</p>
+   
+      </div>
+      <div class="linea-vertical"></div>
+      <div class="columna">
+       
+        <p>{{ usuario.nombre }}</p>
+        <p>{{ usuario.limiteCredito }}</p>
+        <p>{{ usuario.cedula}}</p>
+        <p>{{ usuario.fechaRegistro | date:'dd/MM/yyyy' }}</p>
+
+      
+      </div>
+    </div>
+
+    <div class="botones">
+    <button class="btn btn-danger" (click)="eliminarUsuario()">Eliminar Usuario</button>
+    <button class="btn btn-primary" (click)="actualizar(usuario.id)">Actualizar usuario</button>
+    <button class="btn btn-dark"  [routerLink]="['/obtenerUsuarios']">Cancelar</button>
+    </div>
+
+  </div>
+  

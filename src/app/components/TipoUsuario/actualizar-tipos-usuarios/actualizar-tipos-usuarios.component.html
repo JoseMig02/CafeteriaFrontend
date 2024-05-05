@@ -1,0 +1,36 @@
+<div class="container">
+    <h1 class="mt-4 mb-4">Actualizar Tipo de Usuario</h1>
+    <form *ngIf="tipoUsuario" (ngSubmit)="actualizarTipoUsuario()" #tipoUsuarioForm="ngForm">
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" [(ngModel)]="tipoUsuario.nombre" name="nombre" class="form-control" id="nombre" required>
+        <div *ngIf="tipoUsuarioForm.controls['nombre']?.invalid && (tipoUsuarioForm.controls['nombre']?.dirty || tipoUsuarioForm.controls['nombre']?.touched)" class="text-danger">
+          <div *ngIf="tipoUsuarioForm.controls['nombre']?.errors?.['required']">El nombre es requerido.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="descripcion">Descripción:</label>
+        <textarea [(ngModel)]="tipoUsuario.descripcion" name="descripcion" class="form-control" id="descripcion" required></textarea>
+        <div *ngIf="tipoUsuarioForm.controls['descripcion']?.invalid && (tipoUsuarioForm.controls['descripcion']?.dirty || tipoUsuarioForm.controls['descripcion']?.touched)" class="text-danger">
+          <div *ngIf="tipoUsuarioForm.controls['descripcion']?.errors?.['required']">La descripción es requerida.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="estado">Estado:</label>
+        <select [(ngModel)]="tipoUsuario.estado" name="estado" class="form-control" id="estado" required>
+          <option value="">Selecciona un estado</option>
+          <option value="Activo">Activo</option>
+          <option value="Inactivo">Inactivo</option>
+        </select>
+        <div *ngIf="tipoUsuarioForm.controls['estado']?.invalid && (tipoUsuarioForm.controls['estado']?.dirty || tipoUsuarioForm.controls['estado']?.touched)" class="text-danger">
+          <div *ngIf="tipoUsuarioForm.controls['estado']?.errors?.['required']">El estado es requerido.</div>
+        </div>
+      </div>
+      <div class="boton">
+     <button type="submit" class="btn btn-primary mt-3">Actualizar</button>
+     <button  class="btn btn-dark mt-3"  [routerLink]="['/obtenerTipoUsuario']">Cancelar</button>
+      </div>
+     
+    </form>
+   
+  </div>

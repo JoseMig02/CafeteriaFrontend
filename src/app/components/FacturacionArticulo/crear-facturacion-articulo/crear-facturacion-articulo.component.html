@@ -1,0 +1,103 @@
+<div class="container">
+    <h1>Crear Facturación de Artículo</h1>
+    <form [formGroup]="facturaForm" (ngSubmit)="guardarFacturaArticulo()">
+      <div class="form-group">
+        <label for="empleadoID">Empleado:</label>
+        <select formControlName="empleadoID" id="empleadoID" class="form-control">
+          <option [ngValue]="null" disabled selected>Selecciona un empleado</option>
+          <option *ngFor="let empleado of empleados" [ngValue]="empleado.id">{{ empleado.nombre }}</option>
+        </select>
+        <div *ngIf="facturaForm.get('empleadoID')?.errors?.['required'] && facturaForm.get('empleadoID')?.touched" class="text-danger">
+          Se requiere seleccionar un empleado.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="usuarioID">Usuario:</label>
+        <select formControlName="usuarioID" id="usuarioID" class="form-control">
+          <option [ngValue]="null" disabled selected>Selecciona un usuario</option>
+          <option *ngFor="let usuario of usuarios" [ngValue]="usuario.id">{{ usuario.nombre }}</option>
+        </select>
+        <div *ngIf="facturaForm.get('usuarioID')?.errors?.['required'] && facturaForm.get('usuarioID')?.touched" class="text-danger">
+          Se requiere seleccionar un usuario.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="campusID">Campus:</label>
+        <select formControlName="campusID" id="campusID" class="form-control">
+          <option [ngValue]="null" disabled selected>Selecciona un campus</option>
+          <option *ngFor="let camp of campus" [ngValue]="camp.id">{{ camp.nombre }}</option>
+        </select>
+        <div *ngIf="facturaForm.get('campusID')?.errors?.['required'] && facturaForm.get('campusID')?.touched" class="text-danger">
+          Se requiere seleccionar un campus.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="cafeteriaID">Cafetería:</label>
+        <select formControlName="cafeteriaID" id="cafeteriaID" class="form-control">
+          <option [ngValue]="null" disabled selected>Selecciona una cafetería</option>
+          <option *ngFor="let cafeteria of cafeterias" [ngValue]="cafeteria.id">{{ cafeteria.nombre }}</option>
+        </select>
+        <div *ngIf="facturaForm.get('cafeteriaID')?.errors?.['required'] && facturaForm.get('cafeteriaID')?.touched" class="text-danger">
+          Se requiere seleccionar una cafetería.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="estado">Estado:</label>
+        <select formControlName="estado" id="estado" class="form-control">
+          <option value="Activo">Activo</option>
+          <option value="Inactivo">Inactivo</option>
+        </select>
+        <div *ngIf="facturaForm.get('estado')?.errors?.['required'] && facturaForm.get('estado')?.touched" class="text-danger">
+          Se requiere seleccionar un estado.
+        </div>
+      </div>
+  
+      <!-- Selector para el campo de artículos -->
+      <div class="form-group">
+        <label for="articuloID">Artículo:</label>
+        <select formControlName="articuloID" id="articuloID" class="form-control">
+          <option [ngValue]="null" disabled selected>Selecciona un artículo</option>
+          <option *ngFor="let articulo of articulos" [ngValue]="articulo.id">{{ articulo.nombre }}</option>
+        </select>
+        <div *ngIf="facturaForm.get('articuloID')?.errors?.['required'] && facturaForm.get('articuloID')?.touched" class="text-danger">
+          Se requiere seleccionar un artículo.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="fechaVenta">Fecha de Venta:</label>
+        <input formControlName="fechaVenta" id="fechaVenta" type="date" class="form-control">
+        <div *ngIf="facturaForm.get('fechaVenta')?.errors?.['required'] && facturaForm.get('fechaVenta')?.touched" class="text-danger">
+          Se requiere seleccionar una fecha de venta.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="montoArticulo">Monto del Artículo:</label>
+        <input formControlName="montoArticulo" id="montoArticulo" type="number" class="form-control">
+        <div *ngIf="facturaForm.get('montoArticulo')?.errors?.['required'] && facturaForm.get('montoArticulo')?.touched" class="text-danger">
+          Se requiere ingresar el monto del artículo.
+        </div>
+        <div *ngIf="facturaForm.get('montoArticulo')?.errors?.['min'] && facturaForm.get('montoArticulo')?.touched" class="text-danger">
+          El monto del artículo debe ser mayor que cero.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="unidadesVendidas">Unidades Vendidas:</label>
+        <input formControlName="unidadesVendidas" id="unidadesVendidas" type="number" class="form-control">
+        <div *ngIf="facturaForm.get('unidadesVendidas')?.errors?.['required'] && facturaForm.get('unidadesVendidas')?.touched" class="text-danger">
+          Se requiere ingresar las unidades vendidas.
+        </div>
+        <div *ngIf="facturaForm.get('unidadesVendidas')?.errors?.['min'] && facturaForm.get('unidadesVendidas')?.touched" class="text-danger">
+          Las unidades vendidas deben ser al menos una.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="comentario">Comentario:</label>
+        <textarea formControlName="comentario" id="comentario" class="form-control"></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary mt-3">Guardar Factura de Artículo</button>
+        <button class="btn btn-secondary mt-4 m-2" [routerLink]="['/obtenerFacturaciones']">Cancelar</button>
+      </div>
+    </form>
+  </div>
+  

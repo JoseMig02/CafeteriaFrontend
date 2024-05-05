@@ -1,0 +1,30 @@
+<div class="container">
+    <h1 class="mt-4 mb-4">Actualizar Proveedor</h1>
+    <form (ngSubmit)="actualizarProveedor()">
+        <div class="form-group">
+            <label for="nombreComercial">Nombre Comercial:</label>
+            <input *ngIf="proveedor" type="text" id="nombreComercial" class="form-control" [(ngModel)]="proveedor.nombreComercial" name="nombreComercial" required>
+            <div *ngIf="!proveedor.nombreComercial" class="text-danger">El nombre comercial es requerido.</div>
+        </div>
+        <div class="form-group">
+            <label for="rnc">RNC:</label>
+            <input *ngIf="proveedor" type="text" id="rnc" class="form-control" [(ngModel)]="proveedor.rnc" name="rnc" required>
+            <div *ngIf="!proveedor.rnc" class="text-danger">El RNC es requerido.</div>
+        </div>
+        <div class="form-group">
+            <label for="fechaRegistro">Fecha de Registro:</label>
+            <input *ngIf="proveedor" type="date" id="fechaRegistro" class="form-control" [(ngModel)]="proveedor.fechaRegistro" name="fechaRegistro" >
+            <div *ngIf="!proveedor?.fechaRegistro" class="text-danger">La fecha de registro es requerida.</div>
+        </div>
+        <div class="form-group">
+            <label for="estado">Estado:</label>
+            <select *ngIf="proveedor" id="estado" class="form-control" [(ngModel)]="proveedor.estado" name="estado" required>
+                <option value="Activo">Activo</option>
+                <option value="Inactivo">Inactivo</option>
+            </select>
+            <div *ngIf="!proveedor.estado" class="text-danger">El estado es requerido.</div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Actualizar</button>
+        <button class="btn btn-secondary mt-4 m-2" [routerLink]="['/obtenerProveedores']">Cancelar</button>
+    </form>
+</div>

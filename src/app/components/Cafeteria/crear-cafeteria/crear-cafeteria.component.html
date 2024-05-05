@@ -1,0 +1,70 @@
+<div class="container">
+    <h1 class="mt-4 mb-4">Crear Cafetería</h1>
+    <form [formGroup]="cafeteriaForm" (submit)="onSubmit()">
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="nombre" formControlName="nombre">
+        <div *ngIf="cafeteriaForm.get('nombre')?.invalid && cafeteriaForm.get('nombre')?.touched" class="text-danger">
+          El nombre es requerido y debe tener entre 3 y 50 caracteres.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="dirección" class="form-label">Dirección</label>
+        <input type="text" class="form-control" id="direccion" formControlName="direccion">
+        <div *ngIf="cafeteriaForm.get('direccion')?.invalid && cafeteriaForm.get('direccion')?.touched" class="text-danger">
+          La dirección es requerida.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="descripcion" class="form-label">Descripción</label>
+        <input type="text" class="form-control" id="descripcion" formControlName="descripcion">
+        <div *ngIf="cafeteriaForm.get('descripcion')?.invalid && cafeteriaForm.get('descripcion')?.touched" class="text-danger">
+          La descripción es requerida.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="encargado" class="form-label">Encargado</label>
+        <input type="text" class="form-control" id="encargado" formControlName="encargado">
+        <div *ngIf="cafeteriaForm.get('encargado')?.invalid && cafeteriaForm.get('encargado')?.touched" class="text-danger">
+          El encargado es requerido.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="teléfono" class="form-label">Teléfono</label>
+        <input type="text" class="form-control" id="telefono" formControlName="telefono">
+        <div *ngIf="cafeteriaForm.get('telefono')?.invalid && cafeteriaForm.get('telefono')?.touched" class="text-danger">
+          El teléfono es requerido.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="estado" class="form-label">Estado</label>
+        <select class="form-control" id="estado" formControlName="estado">
+          <option value="Activo">Activo</option>
+          <option value="Inactivo">Inactivo</option>
+        </select>
+        <div *ngIf="cafeteriaForm.get('estado')?.invalid && cafeteriaForm.get('estado')?.touched" class="text-danger">
+          El estado es requerido.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="campus" class="form-label">Campus</label>
+        <select class="form-control" id="campus" formControlName="campusID">
+          <option *ngFor="let campus of campusList" [value]="campus.id">{{ campus.nombre }}</option>
+        </select>
+        <div *ngIf="cafeteriaForm.get('campusID')?.invalid && cafeteriaForm.get('campusID')?.touched" class="text-danger">
+          El campus es requerido.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="imagen">Imagen:</label>
+        <input type="file" id="imagen" class="form-control" formControlName="img" (change)="onFileSelected($event)">
+      </div>
+      <div *ngIf="cafeteriaForm.get('img')?.invalid && cafeteriaForm.get('campusID')?.touched" class="text-danger">
+        La imagen es requerido.
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Crear Cafeteria</button>
+      <button class="btn btn-secondary mt-2 m-2" [routerLink]="['/obtenerCafeterias']">Cancelar</button>
+    </form>
+  </div>
+  

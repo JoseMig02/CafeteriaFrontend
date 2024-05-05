@@ -1,0 +1,82 @@
+<div class="container">
+    <h1>Crear Artículo</h1>
+    <form [formGroup]="articuloForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" class="form-control" formControlName="nombre">
+        <div *ngIf="articuloForm.get('nombre')?.invalid && (articuloForm.get('nombre')?.dirty || articuloForm.get('nombre')?.touched)" class="text-danger">
+          <div *ngIf="articuloForm.get('nombre')?.errors?.['required']">El nombre es obligatorio</div>
+          <div *ngIf="articuloForm.get('nombre')?.errors?.['minlength']">El nombre debe tener al menos 3 caracteres</div>
+          <div *ngIf="articuloForm.get('nombre')?.errors?.['maxlength']">El nombre no puede exceder los 50 caracteres</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="descripcion">Descripción:</label>
+        <textarea class="form-control" formControlName="descripcion"></textarea>
+      </div>
+  
+      <div class="form-group">
+        <label for="marcaID">Marca:</label>
+        <select class="form-control" formControlName="marcaID">
+          <option *ngFor="let marca of marcas" [value]="marca.id">{{ marca.nombre }}</option>
+        </select>
+        <div *ngIf="articuloForm.get('marcaID')?.invalid && articuloForm.get('marcaID')?.dirty" class="text-danger">
+          <div *ngIf="articuloForm.get('marcaID')?.errors?.['required']">La marca es obligatoria</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="precio">Precio:</label>
+        <input type="number" class="form-control" formControlName="precio">
+        <div *ngIf="articuloForm.get('precio')?.invalid && (articuloForm.get('precio')?.dirty || articuloForm.get('precio')?.touched)" class="text-danger">
+          <div *ngIf="articuloForm.get('precio')?.errors?.['required']">El precio es obligatorio</div>
+          <div *ngIf="articuloForm.get('precio')?.errors?.['min']">El precio no puede ser menor que 0</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="proveedorID">Proveedor:</label>
+        <select class="form-control" formControlName="proveedorID">
+          <option *ngFor="let proveedor of proveedores" [value]="proveedor.id">{{ proveedor.nombreComercial }}</option>
+        </select>
+        <div *ngIf="articuloForm.get('proveedorID')?.invalid && articuloForm.get('proveedorID')?.dirty" class="text-danger">
+          <div *ngIf="articuloForm.get('proveedorID')?.errors?.['required']">El proveedor es obligatorio</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="existencia">Existencia:</label>
+        <input type="number" class="form-control" formControlName="existencia">
+        <div *ngIf="articuloForm.get('existencia')?.invalid && (articuloForm.get('existencia')?.dirty || articuloForm.get('existencia')?.touched)" class="text-danger">
+          <div *ngIf="articuloForm.get('existencia')?.errors?.['required']">La existencia es obligatoria</div>
+          <div *ngIf="articuloForm.get('existencia')?.errors?.['min']">La existencia no puede ser menor que 0</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="estado">Estado:</label>
+        <select class="form-control" formControlName="estado">
+          <option value="Disponible">Disponible</option>
+          <option value="Agotado">Agotado</option>
+        </select>
+        <div *ngIf="articuloForm.get('estado')?.invalid && (articuloForm.get('estado')?.dirty || articuloForm.get('estado')?.touched)" class="text-danger">
+          <div *ngIf="articuloForm.get('estado')?.errors?.['required']">El estado es obligatorio</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="img">Imagen:</label>
+        <input type="file" class="form-control" (change)="onFileSelected($event)">
+        <div *ngIf="!selectedFile && (articuloForm.get('img')?.dirty || articuloForm.get('img')?.touched)" class="text-danger">
+          <div class="alert alert-danger">La imagen es obligatoria</div>
+        </div>
+      </div>
+  <div class="botones mb-4">
+     <button type="submit" class="btn btn-primary ">Crear Artículo</button>
+      <button class="btn btn-secondary m-1 " [routerLink]="['/obtenerArticulos']">Cancelar</button>
+  </div>
+     
+    </form>
+  </div>
+  

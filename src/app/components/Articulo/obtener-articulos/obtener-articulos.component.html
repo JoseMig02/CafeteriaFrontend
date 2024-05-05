@@ -1,0 +1,63 @@
+<div class="container">
+  <h1>Lista de Artículos</h1>
+        <button  type="button" class="btn btn-success mb-4 mt-2"    [routerLink]="['/crearArticulo']">
+<i class="bi bi-plus-circle-fill"></i> Crear Articulo
+</button>
+
+  <div class="row">
+    <div *ngFor="let articulo of articulos" class="col-md-4 mb-4">
+      <div class="card" (click)="showDetails(articulo)">
+        <ng-container *ngIf="articulo.img; else skeleton">
+          <div class="image-container" [style.backgroundImage]="'url(' + (articulo.img) + ')'">
+            <div class="overlay"></div>
+          </div>
+        </ng-container>
+        <ng-template #skeleton>
+          <p-skeleton width="100%" height="230px"></p-skeleton>
+        </ng-template>
+        <div class="card-body">
+          <h5 class="card-title">{{ articulo.nombre }}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p-dialog [(visible)]="displayDialog" [modal]="true" [responsive]="true">
+    <ng-template pTemplate="content">
+      <div class="dialog-content">
+        <div class="imagee-container">
+          <img [src]="selectedArticulo?.img" alt="Imagen del artículo">
+          <div class="bo">
+               <button style="margin-right: 5px;" (click)="actualizar(selectedArticulo!.id)" class="btn btn-primary mt-4" >Actualizar</button>
+
+          <button (click)="eliminarArticulo(selectedArticulo!.id)" class="btn btn-danger mt-4 ml-2">Eliminar</button>
+          </div>
+       
+          
+            <p-toast></p-toast>
+            <p-confirmDialog></p-confirmDialog>
+          
+         
+       
+        </div>
+        <div class="details">
+          <h2>Nombre:</h2>
+          <p>{{ selectedArticulo?.nombre }}</p>
+          <h2>Descripción:</h2>
+          <p>{{ selectedArticulo?.descripcion }}</p>
+          <h2>Existencia:</h2>
+          <p>{{ selectedArticulo?.existencia }}</p>
+          <h2>Estado:</h2>
+          <p>{{ selectedArticulo?.estado }}</p>
+          <h2>Precio:</h2>
+          <p>{{ selectedArticulo?.precio }}</p>
+          <h2>Proveedor:</h2>
+          <p>{{ proveedor?.nombreComercial }}</p>
+          <h2>Marca:</h2>
+          <p>{{ marca?.nombre }}</p>
+        </div>
+      </div>
+    </ng-template>
+  </p-dialog>
+  
+</div>

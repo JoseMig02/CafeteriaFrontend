@@ -1,0 +1,9 @@
+<div class="container">
+    <h1 class="mt-4 mb-4">Eliminar Marca</h1>
+    <div *ngIf="empleado" class="alert alert-danger">
+      ¿Estás seguro de que deseas eliminar el empleado"{{ empleado.nombre }}"?
+    </div>
+    <button class="btn btn-danger" (click)="eliminarEmpleado()">Eliminar</button>
+    <button class="btn btn-secondary mt-2 m-2" [routerLink]="['/obtenerEmpleados']">Cancelar</button>
+  </div>
+  

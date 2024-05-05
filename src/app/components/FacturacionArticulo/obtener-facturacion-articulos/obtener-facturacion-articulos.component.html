@@ -1,0 +1,61 @@
+<div class="container">
+  <h1 class="title mb-4">Lista de Facturas de Artículos</h1>
+
+  <div class="d-flex m-4">
+    <button type="button" class="btn btn-success m-2" [routerLink]="['/crearFacturacionArticulo']">
+        <i class="bi bi-plus-circle-fill"></i> Crear Facturación
+    </button>
+    <button class="btn btn-primary m-2" (click)="irAVentasPorUsuario()">
+        <i class="bi bi-person"></i> Ventas por Usuario
+    </button>
+    <button class="btn btn-success m-2" (click)="irAVentasPorFecha()">
+        <i class="bi bi-calendar"></i> Ventas por Fecha
+    </button>
+    <button class="btn btn-info m-2" (click)="irAVentasPorCampus()">
+        <i class="bi bi-building"></i> Ventas por Campus
+    </button>
+</div>
+
+
+  <div class="facturas-container row">
+    <div *ngFor="let factura of facturacionArticulos" class="factura-card col-md-4" >
+      <div class="card factura" (click)="mostrarDetalleFactura(factura)" >
+        <div class="card-header"  (click)="showDialog()">
+          <h2 class="card-title">Factura No. {{ factura.noFactura }}</h2>
+          <p class="card-text">Fecha: {{ factura.fechaVenta | date:'mediumDate' }}</p>
+        </div>
+        <div class="card-body">
+          <div class="factura-info">
+            <p class="factura-field"><strong>Monto:</strong> {{ factura.montoArticulo | currency }}</p>
+            <p class="factura-field"><strong>Unidades Vendidas:</strong> {{ factura.unidadesVendidas }}</p>
+            <p class="factura-field"><strong>Total:</strong> {{ factura.Total | currency }}</p>
+          </div>
+          <div class="card-footer d-flex justify-content-end">
+            <button class="btn btn-sm btn-primary me-2" (click)="actualizar(factura.noFactura)" >
+              <i class="bi bi-pencil-fill"></i>
+            </button>
+            <button (click)="confirm2(factura.noFactura)"  class="btn btn-sm btn-danger" >
+              <i class="bi bi-trash-fill"></i>
+            </button>
+            
+          
+          </div>
+        </div>
+        
+      </div>
+     
+</div>
+    </div>
+  
+</div>
+<div class="card flex justify-content-center gap-2">
+  <p-confirmDialog></p-confirmDialog>
+  
+
+</div>
+
+<p-dialog header="Detalles de la Factura" [(visible)]="displayDialog" [style]="{ 'max-width': '800px', 'width': '80vw' }">
+  <!-- Aquí se mostrarán los detalles de la factura -->
+  <app-detalles-facturacion-articulo [factura]="facturaSeleccionada"></app-detalles-facturacion-articulo>
+  <button type="button" pButton icon="pi pi-times" (click)="hideDialog()" label="Cerrar"></button>
+</p-dialog>

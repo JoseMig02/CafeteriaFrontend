@@ -1,0 +1,21 @@
+.marca-card {
+    transition: transform 0.3s ease;
+
+  }
+  
+  .marca-card:hover {
+    transform: scale(1.04);
+    cursor: pointer;
+   
+  }
+  
+  .card-title {
+    color: #333;
+    font-size: 1.2rem;
+  }
+  
+  .card-text {
+    color: #666;
+    font-size: 1rem;
+  }
+  

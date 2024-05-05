@@ -1,0 +1,6 @@
+
+<p><strong>No. de Factura:</strong> {{ factura?.noFactura }}</p>
+<p><strong>Fecha:</strong> {{ factura?.fechaVenta | date:'mediumDate' }}</p>
+<p><strong>Monto:</strong> {{ factura?.montoArticulo | currency }}</p>
+<p><strong>Unidades Vendidas:</strong> {{ factura?.unidadesVendidas }}</p>
+<p><strong>Total:</strong> {{ factura?.Total | currency }}</p>

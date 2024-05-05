@@ -1,0 +1,17 @@
+.container {
+    margin-top: 20px;
+  }
+  
+  .card {
+    transition: transform 0.3s;
+    cursor: pointer;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card-img-top {
+    width: 100%;
+   height: auto  }
+  

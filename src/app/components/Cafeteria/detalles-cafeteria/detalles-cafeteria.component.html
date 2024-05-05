@@ -1,0 +1,30 @@
+<div class="container">
+  <button  class="btn btn-light"  [routerLink]="['/obtenerCafeterias']">
+    <i class="bi bi-arrow-left"></i> Volver a las cafeterias
+</button>
+    <div class="row">
+      <div class="col-md-4 offset-md-3">
+     
+        <div class="card mb-6" *ngIf="cafeteria">
+          <img class="card-img-top" [src]="imagenUrl" alt="Cafetería">
+          <div class="card-body">
+            <h5 class="card-title">{{ cafeteria.nombre }}</h5>
+            <p class="card-text">Descripción: {{ cafeteria.descripcion }}</p>
+            <p class="card-text">Encargado: {{ cafeteria.encargado }}</p>
+            <p class="card-text">Estado: {{ cafeteria.estado }}</p>
+            <p class="card-text">Dirección: {{ cafeteria.direccion }}</p>
+            <p class="card-text">Teléfono: {{ cafeteria.telefono }}</p>
+            <div class="d-flex justify-content-between ">
+                <button (click)="actualizar(cafeteria.id)" class="btn btn-primary p-2" >
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button (click)="eliminar(cafeteria.id)"  class="btn btn-danger p-2" >
+                  <i class="bi bi-trash"></i>
+                </button>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

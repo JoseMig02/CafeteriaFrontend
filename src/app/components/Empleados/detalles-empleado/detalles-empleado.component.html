@@ -1,0 +1,30 @@
+<div class="container">
+    <h1 class="mt-4 mb-4">Detalle del Empleado</h1>
+    <button  class="btn btn-light mb-4"  [routerLink]="['/obtenerEmpleados']">
+      <i class="bi bi-arrow-left"></i> Volver a Empleados
+  </button>
+    <div *ngIf="empleado" class="card mb-4 shadow">
+      <div class="card-body">
+        <h5 class="card-title">{{ empleado.nombre }}</h5>
+        <p class="card-text">Cédula: {{ empleado.cedula }}</p>
+        <p class="card-text">Tanda Labor: {{ empleado.tandaLabor }}</p>
+        <p class="card-text">Cargo: {{ empleado.cargo }}</p>
+        <p class="card-text">Porcentaje de Comisión: {{ empleado.porcientoComision }}</p>
+        <p class="card-text">Fecha de Ingreso: {{ empleado.fechaIngreso | date }}</p>
+        <p class="card-text">Estado: {{ empleado.estado }}</p>
+      </div>
+    </div>
+    <div *ngIf="empleado" class="botones ">
+      <button (click)="actualizar(empleado.id)" type="button" class="btn btn-primary m-2">
+        <i class="bi bi-pencil-fill"></i> Actualizar
+    </button>
+    <!-- Botón para borrar -->
+    <button (click)="eliminar(empleado.id)" type="button" class="btn btn-danger" >
+        <i class="bi bi-trash-fill"></i> Borrar
+    </button>
+    
+    
+    </div>
+
+  </div>
+  

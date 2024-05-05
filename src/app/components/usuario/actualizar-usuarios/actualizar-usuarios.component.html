@@ -1,0 +1,60 @@
+<div class="container">
+    <form (ngSubmit)="actualizarUsuario()" style="width: 30%; margin-left: 30px; margin-top: 30px;" enctype="multipart/form-data">
+      <h3>Actualizar Usuario</h3>
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input *ngIf="usuario" type="text" [(ngModel)]="usuario.nombre" name="nombre" class="form-control" id="nombre" placeholder="Nombre">
+      </div>
+  
+      <div class="form-group">
+        <label for="cedula">Cédula</label>
+        <input *ngIf="usuario" type="text" [(ngModel)]="usuario.cedula" name="cedula" class="form-control" id="cedula" placeholder="Cédula">
+      </div>
+  
+      <div class="form-group">
+        <label for="limiteCredito">Límite de crédito</label>
+        <input *ngIf="usuario" type="number" [(ngModel)]="usuario.limiteCredito" name="limiteCredito" class="form-control">
+      </div>
+    
+  
+      <div class="form-group">
+        <label for="estado">Estado</label>
+        <select *ngIf="usuario"  [(ngModel)]="usuario.estado" name="estado" class="form-control">
+          <option value="activo">Activo</option>
+          <option value="inactivo">Inactivo</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input *ngIf="usuario" type="text" [(ngModel)]="usuario.username" name="username" class="form-control">
+      </div>
+  
+      <div class="form-group">
+        <label for="fechaRegistro">Fecha de Registro</label>
+        <input *ngIf="usuario" type="date" [(ngModel)]="usuario.fechaRegistro" name="fechaRegistro" class="form-control" >
+      </div>
+  
+      <div class="form-group">
+        <label for="email">Correo Electrónico</label>
+        <input *ngIf="usuario" type="email" [(ngModel)]="usuario.email" name="email" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="contrasena">contrasena</label>
+        <input *ngIf="usuario" type="password" [(ngModel)]="usuario.password" name="password" class="form-control">
+      </div>
+  
+      <div class="form-group">
+        <label for="img">Imagen</label>
+        <input type="file" (change)="onFileSelected($event)" class="form-control">
+      </div>
+      
+      <div *ngIf="imgUrl" class="form-group">
+        
+        <img [src]="imgUrl" alt="Imagen de usuario" width="100">
+      </div>
+      <button type="submit" class="btn btn-primary mt-3">Actualizar</button>
+      <button *ngIf="usuario" class="btn btn-dark mt-4 " style="margin-left: 10px; margin-bottom: 10px;" [routerLink]="['/detallesUsuarios' ,usuario.id]">Cancelar</button>
+    </form>
+  </div>
+  

@@ -1,0 +1,41 @@
+.factura-card {
+    margin-bottom: 20px;
+}
+
+.factura-card .card {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.factura-card .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.factura-card .card-header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.factura-card .card-title {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+}
+
+.factura-card .card-body {
+    padding: 15px;
+}
+
+.factura-card .factura-info {
+    font-size: 0.9rem;
+}
+
+.factura-card .factura-field {
+    margin-bottom: 5px;
+}

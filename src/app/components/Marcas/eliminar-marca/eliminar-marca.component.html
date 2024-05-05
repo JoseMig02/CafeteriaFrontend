@@ -1,0 +1,9 @@
+<div class="container">
+    <h1 class="mt-4 mb-4">Eliminar Marca</h1>
+    <div class="alert alert-danger">
+      ¿Estás seguro de que deseas eliminar la marca "{{ marca?.nombre }}"?
+    </div>
+    <button class="btn btn-danger" (click)="eliminarMarca()">Eliminar</button>
+    <button class="btn btn-secondary mt-2 m-2" [routerLink]="['/obtenerMarcas']">Cancelar</button>
+  </div>
+  

@@ -1,0 +1,20 @@
+<div class="container">
+    <h1 class="mt-4 mb-4">Cafeterías</h1>
+    <div class="mt-4 mb-4">
+      <button  type="button" class="btn btn-success"   [routerLink]="['/crearCafeteria']">
+<i class="bi bi-plus-circle-fill"></i> Crear Cafeteria
+</button>
+</div>
+    <div class="row">
+      <div class="col-lg-3 mb-4" *ngFor="let cafeteria of cafeteriasConImagenes" (click)="obtenerDetalles(cafeteria.cafeteria.id)">
+        <div class="card cafeterias-card">
+          <img class="card-img-top" [src]="cafeteria.imgUrl" alt="Cafetería">
+          <div class="card-body">
+            <h5 class="card-title">{{ cafeteria.cafeteria.nombre }}</h5>
+            <p class="card-text">{{ cafeteria.cafeteria.descripcion }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

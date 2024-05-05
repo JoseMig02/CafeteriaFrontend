@@ -1,0 +1,43 @@
+<div class="container">
+    <h1>Crear Tipo de Usuario</h1>
+    <form [formGroup]="tipoUsuarioForm" (submit)="crearTipoUsuario()">
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" formControlName="nombre" class="form-control" id="nombre" required>
+        <div *ngIf="tipoUsuarioForm.get('nombre')?.invalid && (tipoUsuarioForm.get('nombre')?.dirty || tipoUsuarioForm.get('nombre')?.touched)"
+          class="text-danger">
+          <div *ngIf="tipoUsuarioForm.get('nombre')?.errors?.['required']">
+            El nombre es obligatorio.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="descripcion">Descripción:</label>
+        <textarea formControlName="descripcion" class="form-control" id="descripcion" required></textarea>
+        <div *ngIf="tipoUsuarioForm.get('descripcion')?.invalid && (tipoUsuarioForm.get('descripcion')?.dirty || tipoUsuarioForm.get('descripcion')?.touched)"
+          class="text-danger">
+          <div *ngIf="tipoUsuarioForm.get('descripcion')?.errors?.['required']">
+            La descripción es obligatoria.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="estado">Estado:</label>
+        <select formControlName="estado" class="form-control" id="estado" required>
+          <option value="" disabled >Seleccione un estado</option>
+          <option value="Activo" [selected]="true">Activo</option>
+          <option value="Inactivo">Inactivo</option>
+        </select>
+        <div *ngIf="tipoUsuarioForm.get('estado')?.invalid && (tipoUsuarioForm.get('estado')?.dirty || tipoUsuarioForm.get('estado')?.touched)"
+          class="text-danger">
+          <div *ngIf="tipoUsuarioForm.get('estado')?.errors?.['required']">
+            Por favor seleccione un estado.
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary mt-3">Crear tipo Usuario</button>
+      <button class="btn btn-secondary mt-4 m-2" [routerLink]="['/obtenerTipoUsuario']">Cancelar</button>
+
+    </form>
+  </div>
+  

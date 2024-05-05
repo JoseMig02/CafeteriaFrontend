@@ -1,0 +1,28 @@
+<div class="container">
+    <h1 class="mt-4 mb-4">Lista de Proveedores</h1>
+    <div class="row">
+        <div class="col-md-4" *ngFor="let proveedor of proveedores">
+            <div class="card mb-4 shadow">
+                <div class="card-body">
+                    <h5 class="card-title">{{ proveedor.nombreComercial }}</h5>
+                    <p class="card-text">RNC: {{ proveedor.rnc }}</p>
+                    <p class="card-text">Fecha de Registro: {{ proveedor.fechaRegistro | date }}</p>
+                    <p class="card-text">Estado: {{ proveedor.estado }}</p>
+
+                    <div class="d-flex justify-content-between ">
+                      <button (click)="actualizar(proveedor.id)" class="btn btn-primary p-2" >
+                        <i class="bi bi-pencil-square"></i>
+                      </button>
+                      <button (click)="eliminar(proveedor.id)" class="btn btn-danger p-2" >
+                        <i class="bi bi-trash"></i>
+                      </button>
+                    </div>
+                </div>
+              
+            </div>
+            
+        </div>
+    </div>
+    <button class="btn btn-primary mt-4" [routerLink]="['/crearProveedor']">Crear Proveedor</button>
+    
+</div>
